@@ -14,8 +14,16 @@ namespace Northwind.Api
             var thisAssembly = typeof(SwaggerConfig).Assembly;
 
             GlobalConfiguration.Configuration
-                .EnableSwagger(c => c.SingleApiVersion("v1", "Northwind"))
-                .EnableSwaggerUi();
+              .EnableSwagger(c =>
+              {
+                  c.SingleApiVersion("v1", "Northwind");
+                  c.PrettyPrint();
+                  c.IncludeXmlComments(string.Format(@"{0}\bin\Northwind.Api.xml",
+                                       System.AppDomain.CurrentDomain.BaseDirectory));
+
+                  c.DescribeAllEnumsAsStrings();
+              })
+              .EnableSwaggerUi();
         }
     }
 }

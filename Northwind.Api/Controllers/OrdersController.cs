@@ -7,6 +7,7 @@ using System.Web.Http;
 using Northwind.Models;
 using Northwind.Dal;
 using System.Configuration;
+using Northwind.Api.Services;
 
 namespace Northwind.Api.Controllers
 {
@@ -17,7 +18,7 @@ namespace Northwind.Api.Controllers
 
         public OrdersController()
         {
-            _northwindDatabaseContext = new DatabaseContext(ConfigurationManager.ConnectionStrings["NorthwindConnection"].ConnectionString);
+            _northwindDatabaseContext = new DatabaseContext(ConfigurationService.GetConnectionString("NorthwindConnection"));
         }
 
         // GET: api/Orders

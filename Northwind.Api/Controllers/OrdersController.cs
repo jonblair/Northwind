@@ -34,6 +34,7 @@ namespace Northwind.Api.Controllers
         /// <response code="200"></response>
         // GET: api/Orders
         [ResponseType(typeof(IEnumerable<Order>))]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK, "",  typeof(IEnumerable<Order>))]
         public HttpResponseMessage Get()
         {
             orderRepo = new OrdersRepository(_northwindDatabaseContext);
